@@ -1,4 +1,6 @@
 # snowfall
-Snowfall keypress for WoW 7.0.3 (Legion)
+Snowfall Keypress for WoW Legion (7.0.3)
 
-currently works badly (1/5 actionbars work)
+currently works perfectly
+
+not yet applied to pet action bar, but applies to all other action bars
