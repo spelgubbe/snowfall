@@ -51,7 +51,8 @@ local animate = function(button)
 	local animation = animations[animationNum]
 	local frame = animation.frame
 	local animationGroup = animation.animationGroup
-	frame:SetFrameStrata(button:GetFrameStrata())
+	frame:SetFrameStrata("HIGH")
+	--frame:SetFrameStrata(button:GetFrameStrata())
 	frame:SetFrameLevel(button:GetFrameLevel() + 10)
 	frame:SetAllPoints(button)
 	animationGroup:Stop()
