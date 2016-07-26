@@ -1,4 +1,4 @@
-# snowfall
+# Snowfall Keypress
 Snowfall Keypress for WoW Legion (7.0.3)
 
 currently works perfectly
