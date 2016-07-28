@@ -1,6 +1,5 @@
 ## Interface: 70300
 ## Title: Snowfall
 ## Author: jkr
-## SavedVariables:
 
 Snowfall.lua
