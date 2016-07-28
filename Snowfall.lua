@@ -1,10 +1,4 @@
---[[
-
-	Problems: when an ability/macro is present (except on first actionbar) it doesn't flash,
-	when you remove the ability/macro however, it flashes (what?!)
-
-]]
-
+-- Snowfall Keypress for WoW 7.0.3
 local animationsCount, animations = 5, {}
 local animationNum = 1
 local replace = string.gsub
@@ -52,7 +46,7 @@ local animate = function(button)
 	local frame = animation.frame
 	local animationGroup = animation.animationGroup
 	frame:SetFrameStrata("HIGH")
-	--frame:SetFrameStrata(button:GetFrameStrata())
+	--frame:SetFrameStrata(button:GetFrameStrata()) -- caused multiactionbars to show animation behind the bar instead of on top of it
 	frame:SetFrameLevel(button:GetFrameLevel() + 10)
 	frame:SetAllPoints(button)
 	animationGroup:Stop()
@@ -61,14 +55,14 @@ local animate = function(button)
 	return true
 end
 
--- didn't run on PLAYER_ENTERING_WORLD
---hooksecurefunc('ActionButton_UpdateHotkeys', function(button, buttonType)
+-- 'ActionButton_UpdateHotkeys' didn't run on PLAYER_ENTERING_WORLD, replaced with 'ActionButton_Update'
 hooksecurefunc('ActionButton_Update', function(button, buttonType)
-	if InCombatLockdown() then return end -- no animation while in CC
+	if InCombatLockdown() then return end -- no button flash while in CC, can be commented out, and animations will run while in CC
 	if not button.hooked then
 		local id, actionButtonType, key
 		if not actionButtonType then
-			actionButtonType = button:GetAttribute('binding') or string.upper(button:GetName())
+			-- button:GetAttribute('binding') is always nil, it's a waste to run, so it's short-circuited (start working in coming patches)
+			actionButtonType =  string.upper(button:GetName()) or button:GetAttribute('binding')
 
 			actionButtonType = replace(actionButtonType, 'BOTTOMLEFT', '1')
 			actionButtonType = replace(actionButtonType, 'BOTTOMRIGHT', '2')
